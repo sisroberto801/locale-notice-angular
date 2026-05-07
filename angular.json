@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "locale-notice-app": {
+    "locale-notice-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "locale-notice-app:build:production"
+              "buildTarget": "locale-notice-angular:build:production"
             },
             "development": {
-              "buildTarget": "locale-notice-app:build:development"
+              "buildTarget": "locale-notice-angular:build:development"
             }
           },
           "defaultConfiguration": "development"

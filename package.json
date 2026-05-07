@@ -1,5 +1,5 @@
 {
-  "name": "locale-notice-app",
+  "name": "locale-notice-angular",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
