@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-loading-spinner',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './loading-spinner.html',
   styleUrl: './loading-spinner.scss',
 })
-export class LoadingSpinner {}
+export class LoadingSpinner {
+  message = input<string>('Cargando...');
+}

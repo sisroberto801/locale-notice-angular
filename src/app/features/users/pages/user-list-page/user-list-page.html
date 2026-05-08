@@ -1,1 +1,51 @@
-<p>user-list-page works!</p>
+<div class="page-container">
+  <div class="header">
+    <h1>📋 Usuarios</h1>
+    <button class="btn-primary" (click)="openCreateForm()">+ Nuevo</button>
+  </div>
+
+  @if (userService.isLoading()) {
+    <app-loading-spinner [message]="'Cargando usuarios...'" />
+  } @else if (userService.error()) {
+    <app-error-message
+      [message]="userService.error()!"
+      (retry)="userService.clearError()"
+    />
+  } @else {
+    <div class="stats">
+      Total: {{ userService.totalUsers() }} usuarios
+    </div>
+
+    <div class="users-grid">
+      @for (user of userService.users(); track user.id) {
+        <app-user-card
+          [user]="user"
+          (edit)="openEditForm($event)"
+          (delete)="deleteUser($event)"
+        />
+      }
+
+      @if (!userService.hasUsers()) {
+        <div class="empty-state">
+          <p>📭 No hay usuarios registrados</p>
+          <button class="btn-create" (click)="openCreateForm()">
+            Crear primer usuario
+          </button>
+        </div>
+      }
+    </div>
+  }
+
+  @if (showForm()) {
+    <div class="modal-overlay" (click)="closeForm()">
+      <div (click)="$event.stopPropagation()">
+        <app-user-form
+          [title]="editingUser() ? 'Editar Usuario' : 'Nuevo Usuario'"
+          [userData]="editingUser()"
+          (submitForm)="saveUser($event)"
+          (cancel)="closeForm()"
+        />
+      </div>
+    </div>
+  }
+</div>

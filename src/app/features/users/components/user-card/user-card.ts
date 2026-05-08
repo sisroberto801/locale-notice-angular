@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { User } from '../../../../core/models/user';
 
 @Component({
   selector: 'app-user-card',
@@ -6,4 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './user-card.html',
   styleUrl: './user-card.scss',
 })
-export class UserCard {}
+export class UserCard {
+  user = input.required<User>();
+  edit = output<User>();
+  delete = output<number>();
+}

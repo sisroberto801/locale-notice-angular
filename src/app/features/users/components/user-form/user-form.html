@@ -1,1 +1,36 @@
-<p>user-form works!</p>
+<div class="form-container">
+  <h2>{{ title() }}</h2>
+
+  <div class="form-group">
+    <label>Nombre *</label>
+    <input
+      type="text"
+      [value]="formData().name"
+      (input)="updateName($any($event.target).value)"
+      placeholder="Nombre completo"
+      autofocus>
+  </div>
+
+  <div class="form-group">
+    <label>Email *</label>
+    <input
+      type="email"
+      [value]="formData().email"
+      (input)="updateEmail($any($event.target).value)"
+      placeholder="usuario@ejemplo.com">
+  </div>
+
+  <div class="form-group">
+    <label>Rol</label>
+    <select [value]="formData().role" (change)="updateRole($any($event.target).value)">
+      <option value="viewer">Viewer</option>
+      <option value="editor">Editor</option>
+      <option value="admin">Admin</option>
+    </select>
+  </div>
+
+  <div class="form-actions">
+    <button type="button" class="btn-cancel" (click)="onCancel()">Cancelar</button>
+    <button type="button" class="btn-submit" (click)="onSubmit()">Guardar</button>
+  </div>
+</div>
