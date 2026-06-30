@@ -1,4 +1,4 @@
-import { Component, input, OnInit, output, signal } from '@angular/core';
+import { Component, input, OnInit, output, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User, UserCreate } from '../../../../core/models/user';
 
@@ -6,6 +6,7 @@ import { User, UserCreate } from '../../../../core/models/user';
   selector: 'app-user-form',
   imports: [FormsModule],
   templateUrl: './user-form.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './user-form.scss',
 })
 export class UserForm implements OnInit {

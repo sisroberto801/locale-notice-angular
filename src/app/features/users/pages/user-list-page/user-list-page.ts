@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { UserService } from '../../../../core/services/user.service';
 import { User, UserCreate } from '../../../../core/models/user';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
@@ -8,16 +8,13 @@ import { UserForm } from '../../components/user-form/user-form';
 
 @Component({
   selector: 'app-user-list-page',
-  imports: [
-    LoadingSpinner,
-    ErrorMessage,
-    UserCard,
-    UserForm
-  ],
+  imports: [LoadingSpinner, ErrorMessage, UserCard, UserForm],
   templateUrl: './user-list-page.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './user-list-page.scss',
 })
-export class UserListPage {userService = inject(UserService);
+export class UserListPage {
+  userService = inject(UserService);
 
   showForm = signal(false);
   editingUser = signal<User | null>(null);
