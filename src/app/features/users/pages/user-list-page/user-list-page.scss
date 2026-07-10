@@ -1,72 +1,144 @@
 .page-container {
-  padding: 2rem;
+  padding: 2.5rem 2rem 4rem;
   max-width: 1200px;
   margin: 0 auto;
+  animation: fade-up 0.5s var(--ease-smooth);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
 
   h1 {
-    color: #2c3e50;
-    font-size: 2rem;
+    color: var(--text-strong);
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(120deg, var(--text-strong) 30%, var(--primary-dark) 120%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    margin-top: 0.35rem;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    font-weight: 400;
   }
 }
 
 .btn-primary {
-  padding: 0.5rem 1rem;
-  background: #3498db;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  background: var(--gradient-primary);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  box-shadow: var(--shadow-primary);
+  transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth), filter 0.25s var(--ease-smooth);
+
+  .btn-icon {
+    font-size: 1.15rem;
+    line-height: 1;
+    font-weight: 700;
+  }
 
   &:hover {
-    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(59, 82, 240, 0.42);
+    filter: brightness(1.05);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 }
 
 .stats {
-  background: #e8f4f8;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  color: #2c3e50;
-  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface);
+  backdrop-filter: blur(14px) saturate(170%);
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  border: 1px solid var(--surface-border);
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.75rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
+  }
 }
 
 .users-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+
+  app-user-card {
+    animation: fade-up 0.45s var(--ease-smooth) both;
+
+    @for $i from 1 through 12 {
+      &:nth-child(#{$i}) { animation-delay: #{$i * 0.05}s; }
+    }
+  }
 }
 
 .empty-state {
+  grid-column: 1 / -1;
   text-align: center;
-  padding: 3rem;
-  background: #f9f9f9;
-  border-radius: 12px;
+  padding: 4rem 2rem;
+  background: var(--surface);
+  backdrop-filter: blur(14px) saturate(170%);
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  border: 1.5px dashed rgba(148, 163, 184, 0.5);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 
   p {
-    margin-bottom: 1rem;
-    color: #7f8c8d;
+    margin-bottom: 1.25rem;
+    color: var(--text-soft);
+    font-size: 1.1rem;
+    font-weight: 500;
   }
 }
 
 .btn-create {
-  padding: 0.5rem 1rem;
-  background: #2ecc71;
+  padding: 0.75rem 1.5rem;
+  background: var(--gradient-success);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
+  font-weight: 600;
+  font-size: 0.92rem;
+  box-shadow: 0 10px 24px rgba(5, 150, 105, 0.32);
+  transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth), filter 0.25s var(--ease-smooth);
 
   &:hover {
-    background: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(5, 150, 105, 0.42);
+    filter: brightness(1.05);
   }
 }
 
@@ -76,9 +148,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(11, 18, 32, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: 1rem;
+  animation: fade-up 0.25s ease both;
 }

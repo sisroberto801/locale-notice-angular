@@ -1,7 +1,12 @@
 <div class="page-container">
   <div class="header">
-    <h1>📋 Usuarios</h1>
-    <button class="btn-primary" (click)="openCreateForm()">+ Nuevo</button>
+    <div class="header-text">
+      <h1>Usuarios</h1>
+      <p class="subtitle">Gestiona los miembros y sus permisos de acceso</p>
+    </div>
+    <button class="btn-primary" (click)="openCreateForm()">
+      <span class="btn-icon">+</span> Nuevo usuario
+    </button>
   </div>
 
   @if (userService.isLoading()) {
