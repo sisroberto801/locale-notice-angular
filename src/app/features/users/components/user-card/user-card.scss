@@ -1,36 +1,31 @@
+$neu-bg: #e0e5ec;
+$neu-text: #5a5a5a;
+$neu-text-muted: #6c7587;
+$neu-shadow-light: rgba(255, 255, 255, 0.7);
+$neu-shadow-dark: rgba(163, 177, 198, 0.6);
+$neu-orange: #ff7b00;
+$neu-orange-light: #ff9900;
+$neu-red: #eb001b;
+
 .user-card {
   position: relative;
-  background: var(--surface);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius);
+  background: $neu-bg;
+  border-radius: 24px;
   padding: 1.35rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth), border-color 0.3s var(--ease-smooth);
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 3px;
-    background: var(--gradient-primary);
-    opacity: 0;
-    transition: opacity 0.3s var(--ease-smooth);
-  }
+  box-shadow:
+    8px 8px 16px $neu-shadow-dark,
+    -8px -8px 16px $neu-shadow-light;
+  transition: transform 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(111, 141, 255, 0.4);
-
-    &::before {
-      opacity: 1;
-    }
+    box-shadow:
+      12px 12px 24px $neu-shadow-dark,
+      -12px -12px 24px $neu-shadow-light;
 
     .user-avatar {
       transform: scale(1.05) rotate(-3deg);
@@ -41,17 +36,19 @@
 .user-avatar {
   width: 54px;
   height: 54px;
-  background: var(--gradient-primary);
-  border-radius: 16px;
+  background: linear-gradient(135deg, $neu-orange-light 0%, $neu-orange 100%);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #fff;
   font-weight: 700;
   font-size: 1.3rem;
   text-transform: uppercase;
   flex-shrink: 0;
-  box-shadow: 0 8px 18px rgba(59, 82, 240, 0.32);
+  box-shadow:
+    4px 4px 8px rgba(163, 177, 198, 0.7),
+    -4px -4px 8px rgba(255, 255, 255, 0.8);
   transition: transform 0.3s var(--ease-smooth);
 }
 
@@ -61,7 +58,7 @@
 
   h3 {
     margin: 0 0 0.15rem 0;
-    color: var(--text-strong);
+    color: $neu-text;
     font-size: 1.08rem;
     font-weight: 700;
     overflow: hidden;
@@ -70,7 +67,7 @@
   }
 
   p {
-    color: var(--text-soft);
+    color: $neu-text-muted;
     font-size: 0.85rem;
     margin-bottom: 0.6rem;
     overflow: hidden;
@@ -84,7 +81,7 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-pill);
+  border-radius: 50px;
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: capitalize;
@@ -96,21 +93,32 @@
     height: 6px;
     border-radius: 50%;
     background: currentColor;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
   }
 
   &.admin {
-    background: rgba(239, 68, 68, 0.12);
-    color: var(--danger-dark);
+    background: rgba($neu-red, 0.1);
+    color: $neu-red;
   }
 
   &.editor {
-    background: rgba(59, 82, 240, 0.12);
-    color: var(--primary-dark);
+    background: rgba($neu-orange, 0.1);
+    color: $neu-orange;
   }
 
   &.viewer {
-    background: rgba(16, 185, 129, 0.12);
-    color: var(--success-dark);
+    background: rgba($neu-shadow-dark, 0.15);
+    color: $neu-text-muted;
+  }
+
+  &.activo {
+    background: rgba(46, 204, 113, 0.12);
+    color: #27ae60;
+  }
+
+  &.inactivo {
+    background: rgba($neu-red, 0.1);
+    color: $neu-red;
   }
 }
 
@@ -120,31 +128,42 @@
   flex-shrink: 0;
 
   button {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid var(--border-color);
+    background: $neu-bg;
+    border: none;
     cursor: pointer;
     font-size: 1rem;
     width: 38px;
     height: 38px;
-    border-radius: 11px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s var(--ease-smooth), background 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth);
+    color: $neu-text-muted;
+    box-shadow:
+      4px 4px 8px $neu-shadow-dark,
+      -4px -4px 8px $neu-shadow-light;
+    transition: transform 0.2s var(--ease-smooth), color 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth);
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
+      box-shadow:
+        6px 6px 12px $neu-shadow-dark,
+        -6px -6px 12px $neu-shadow-light;
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow:
+        inset 2px 2px 4px $neu-shadow-dark,
+        inset -2px -2px 4px $neu-shadow-light;
     }
   }
 
   .btn-edit:hover {
-    background: var(--primary-50);
-    border-color: rgba(59, 82, 240, 0.3);
+    color: $neu-orange;
   }
 
   .btn-delete:hover {
-    background: #fee2e2;
-    border-color: rgba(239, 68, 68, 0.3);
+    color: $neu-red;
   }
 }

@@ -3,12 +3,13 @@ import { UserService } from '../../../../core/services/user.service';
 import { User, UserCreate } from '../../../../core/models/user';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
 import { ErrorMessage } from '../../../../shared/components/error-message/error-message';
+import { Paginator } from '../../../../shared/components/paginator/paginator';
 import { UserCard } from '../../components/user-card/user-card';
 import { UserForm } from '../../components/user-form/user-form';
 
 @Component({
   selector: 'app-user-list-page',
-  imports: [LoadingSpinner, ErrorMessage, UserCard, UserForm],
+  imports: [LoadingSpinner, ErrorMessage, Paginator, UserCard, UserForm],
   templateUrl: './user-list-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './user-list-page.scss',

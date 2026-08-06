@@ -1,9 +1,11 @@
 <div class="user-card">
   <div class="user-avatar">{{ user().username.charAt(0) }}</div>
   <div class="user-info">
-    <h3>{{ user().name }}</h3>
-    <p>{{ user().email }}</p>
-    <span class="role" [class]="user().role">{{ user().role }}</span>
+    <h3>{{ user().name || user().username }}</h3>
+    <p>{{ user().email || user().status }}</p>
+    <span class="role" [class]="(user().role || user().status || '').toLowerCase()">
+      {{ user().role || user().status }}
+    </span>
   </div>
   <div class="user-actions">
     <button (click)="edit.emit(user())" class="btn-edit">✏️</button>

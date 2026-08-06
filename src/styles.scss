@@ -75,13 +75,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em;
 
-  /* Layered mesh-gradient background for depth */
-  background-color: #eef2fb;
+  /* Neumorphic soft grey background to match modal */
+  background-color: #e0e5ec;
   background-image:
-    radial-gradient(at 12% 18%, rgba(111, 141, 255, 0.28) 0px, transparent 55%),
-    radial-gradient(at 88% 8%, rgba(168, 85, 247, 0.22) 0px, transparent 50%),
-    radial-gradient(at 78% 92%, rgba(16, 185, 129, 0.16) 0px, transparent 50%),
-    radial-gradient(at 25% 95%, rgba(59, 82, 240, 0.14) 0px, transparent 45%);
+    radial-gradient(at 12% 18%, rgba(255, 255, 255, 0.45) 0px, transparent 55%),
+    radial-gradient(at 88% 8%, rgba(163, 177, 198, 0.25) 0px, transparent 50%),
+    radial-gradient(at 78% 92%, rgba(255, 255, 255, 0.35) 0px, transparent 50%),
+    radial-gradient(at 25% 95%, rgba(163, 177, 198, 0.2) 0px, transparent 45%);
   background-attachment: fixed;
 }
 

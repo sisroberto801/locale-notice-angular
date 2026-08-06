@@ -39,6 +39,17 @@
         </div>
       }
     </div>
+
+    @if (userService.pages() > 1) {
+      <app-paginator
+        [page]="userService.page()"
+        [pages]="userService.pages()"
+        [limit]="userService.limit()"
+        [total]="userService.total()"
+        (pageChange)="userService.setPage($event)"
+        (limitChange)="userService.setLimit($event)"
+      />
+    }
   }
 
   @if (showForm()) {
