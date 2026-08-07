@@ -42,13 +42,20 @@ $neu-red: #eb001b;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.25rem;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: $neu-bg;
+  box-shadow:
+    8px 8px 16px $neu-shadow-dark,
+    -8px -8px 16px $neu-shadow-light;
 
   .circle {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    display: inline-block;
+    display: block;
 
     &-red {
       background: $neu-red;
