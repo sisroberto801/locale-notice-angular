@@ -1,4 +1,4 @@
-import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy, viewChild, ElementRef, effect } from '@angular/core';
 import { UserService } from '../../../../core/services/user.service';
 import { User, UserCreate } from '../../../../core/models/user';
 import { LoadingSpinner } from '../../../../shared/components/loading-spinner/loading-spinner';
@@ -19,6 +19,18 @@ export class UserListPage {
 
   showForm = signal(false);
   editingUser = signal<User | null>(null);
+  dialogRef = viewChild<ElementRef<HTMLDialogElement>>('dialogRef');
+
+  constructor() {
+    effect(() => {
+      if (this.showForm()) {
+        const dialog = this.dialogRef()?.nativeElement;
+        if (dialog && !dialog.open) {
+          dialog.showModal();
+        }
+      }
+    });
+  }
 
   openCreateForm() {
     this.editingUser.set(null);
@@ -31,8 +43,19 @@ export class UserListPage {
   }
 
   closeForm() {
+    const dialog = this.dialogRef()?.nativeElement;
+    if (dialog?.open) {
+      dialog.close();
+    }
     this.showForm.set(false);
     this.editingUser.set(null);
+  }
+
+  onDialogClick(event: MouseEvent) {
+    const dialog = this.dialogRef()?.nativeElement;
+    if (event.target === dialog) {
+      this.closeForm();
+    }
   }
 
   saveUser(userData: UserCreate) {

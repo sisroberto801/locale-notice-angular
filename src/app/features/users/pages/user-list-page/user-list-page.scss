@@ -1,10 +1,6 @@
-$neu-bg: #e0e5ec;
-$neu-text: #5a5a5a;
-$neu-text-muted: #6c7587;
-$neu-shadow-light: rgba(255, 255, 255, 0.7);
-$neu-shadow-dark: rgba(163, 177, 198, 0.6);
-$neu-orange: #ff7b00;
-$neu-orange-light: #ff9900;
+@use 'brand-logo' as *;
+@use 'neu' as *;
+@use 'variables' as *;
 
 .page-container {
   padding: 2.5rem 2rem 4rem;
@@ -42,39 +38,14 @@ $neu-orange-light: #ff9900;
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.4rem;
-  background: linear-gradient(135deg, $neu-orange-light 0%, $neu-orange 100%);
-  color: #fff;
-  border: none;
-  border-radius: 16px;
-  cursor: pointer;
-  font-weight: 700;
   font-size: 0.92rem;
   white-space: nowrap;
-  box-shadow:
-    6px 6px 12px $neu-shadow-dark,
-    -6px -6px 12px $neu-shadow-light,
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth);
+  @include neu-button($radius: 16px, $shadow-size: 6px);
 
   .btn-icon {
     font-size: 1.15rem;
     line-height: 1;
     font-weight: 700;
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow:
-      8px 8px 16px $neu-shadow-dark,
-      -8px -8px 16px $neu-shadow-light,
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  }
-
-  &:active {
-    transform: translateY(0);
-    box-shadow:
-      inset 4px 4px 8px rgba(0, 0, 0, 0.2),
-      inset -4px -4px 8px rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -82,16 +53,13 @@ $neu-orange-light: #ff9900;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: $neu-bg;
   padding: 0.5rem 1.1rem;
   border-radius: 50px;
   margin-bottom: 1.75rem;
   color: $neu-text-muted;
   font-size: 0.85rem;
   font-weight: 600;
-  box-shadow:
-    6px 6px 10px $neu-shadow-dark,
-    -6px -6px 10px $neu-shadow-light;
+  @include neu-raised($size: 6px);
 
   &::before {
     content: '';
@@ -121,11 +89,8 @@ $neu-orange-light: #ff9900;
   grid-column: 1 / -1;
   text-align: center;
   padding: 4rem 2rem;
-  background: $neu-bg;
   border-radius: 30px;
-  box-shadow:
-    10px 10px 20px $neu-shadow-dark,
-    -10px -10px 20px $neu-shadow-light;
+  @include neu-raised($size: 10px);
 
   p {
     margin-bottom: 1.25rem;
@@ -137,48 +102,31 @@ $neu-orange-light: #ff9900;
 
 .btn-create {
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, $neu-orange-light 0%, $neu-orange 100%);
-  color: #fff;
-  border: none;
-  border-radius: 16px;
-  cursor: pointer;
-  font-weight: 700;
   font-size: 0.92rem;
-  box-shadow:
-    6px 6px 12px $neu-shadow-dark,
-    -6px -6px 12px $neu-shadow-light,
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition: transform 0.25s var(--ease-smooth), box-shadow 0.25s var(--ease-smooth);
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow:
-      8px 8px 16px $neu-shadow-dark,
-      -8px -8px 16px $neu-shadow-light,
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  }
-
-  &:active {
-    transform: translateY(0);
-    box-shadow:
-      inset 4px 4px 8px rgba(0, 0, 0, 0.2),
-      inset -4px -4px 8px rgba(255, 255, 255, 0.2);
-  }
+  @include neu-button($radius: 16px, $shadow-size: 6px);
 }
 
-.modal-overlay {
+dialog.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(200, 208, 220, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   padding: 1rem;
   animation: fade-up 0.25s ease both;
+
+  &::backdrop {
+    background: rgba(200, 208, 220, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }

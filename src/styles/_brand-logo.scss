@@ -1,0 +1,47 @@
+@use 'variables' as *;
+
+/* ===== Mixin: brand-logo =====
+   Logo circular con dos círculos superpuestos (rojo + naranja).
+   Parametrizable por tamaño. */
+@mixin brand-logo(
+  $size: 42px,
+  $circle-size: 16px,
+  $shadow-size: 3px,
+  $circle-overlap: 5px,
+  $red: $neu-red,
+  $orange: $neu-orange,
+  $bg: $neu-bg,
+  $shadow-light: $neu-shadow-light,
+  $shadow-dark: $neu-shadow-dark
+) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background: $bg;
+  box-shadow:
+    #{$shadow-size} #{$shadow-size} #{$shadow-size * 2} $shadow-dark,
+    -#{$shadow-size} -#{$shadow-size} #{$shadow-size * 2} $shadow-light;
+
+  .circle {
+    display: block;
+    width: $circle-size;
+    height: $circle-size;
+    border-radius: 50%;
+    box-shadow: #{$shadow-size * 0.5} #{$shadow-size * 0.5} #{$shadow-size} rgba(0, 0, 0, 0.15);
+
+    &-red {
+      background: $red;
+      margin-right: -#{$circle-overlap};
+      opacity: 0.9;
+    }
+
+    &-orange {
+      background: $orange;
+      margin-left: -#{$circle-overlap};
+      opacity: 0.85;
+    }
+  }
+}

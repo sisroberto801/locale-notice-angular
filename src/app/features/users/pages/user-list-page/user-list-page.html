@@ -53,15 +53,13 @@
   }
 
   @if (showForm()) {
-    <div class="modal-overlay" (click)="closeForm()">
-      <div (click)="$event.stopPropagation()">
-        <app-user-form
-          [title]="editingUser() ? 'Editar Usuario' : 'Nuevo Usuario'"
-          [userData]="editingUser()"
-          (submitForm)="saveUser($event)"
-          (cancel)="closeForm()"
-        />
-      </div>
-    </div>
+    <dialog #dialogRef class="modal-overlay" (click)="onDialogClick($event)" (close)="closeForm()">
+      <app-user-form
+        [title]="editingUser() ? 'Editar Usuario' : 'Nuevo Usuario'"
+        [userData]="editingUser()"
+        (submitForm)="saveUser($event)"
+        (cancel)="closeForm()"
+      />
+    </dialog>
   }
 </div>

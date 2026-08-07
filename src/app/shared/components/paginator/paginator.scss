@@ -1,10 +1,6 @@
-$neu-bg: #e0e5ec;
-$neu-text: #5a5a5a;
-$neu-text-muted: #6c7587;
-$neu-shadow-light: rgba(255, 255, 255, 0.7);
-$neu-shadow-dark: rgba(163, 177, 198, 0.6);
-$neu-orange: #ff7b00;
-$neu-orange-light: #ff9900;
+@use 'brand-logo' as *;
+@use 'neu' as *;
+@use 'variables' as *;
 
 .paginator {
   display: flex;
@@ -14,11 +10,8 @@ $neu-orange-light: #ff9900;
   gap: 1rem;
   margin-top: 2rem;
   padding: 1rem 1.25rem;
-  background: $neu-bg;
   border-radius: 20px;
-  box-shadow:
-    8px 8px 16px $neu-shadow-dark,
-    -8px -8px 16px $neu-shadow-light;
+  @include neu-raised($size: 8px);
 }
 
 .paginator-info {
@@ -52,24 +45,18 @@ $neu-orange-light: #ff9900;
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
-  box-shadow:
-    4px 4px 8px $neu-shadow-dark,
-    -4px -4px 8px $neu-shadow-light;
+  @include neu-raised($size: 4px);
   transition: transform 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth), color 0.2s;
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
     color: $neu-orange;
-    box-shadow:
-      6px 6px 12px $neu-shadow-dark,
-      -6px -6px 12px $neu-shadow-light;
+    @include neu-raised($size: 6px);
   }
 
   &:active:not(:disabled) {
     transform: translateY(0);
-    box-shadow:
-      inset 2px 2px 4px $neu-shadow-dark,
-      inset -2px -2px 4px $neu-shadow-light;
+    @include neu-inset($size: 2px);
   }
 
   &:disabled {
@@ -116,7 +103,6 @@ $neu-orange-light: #ff9900;
 
   select {
     appearance: none;
-    background: $neu-bg;
     border: none;
     border-radius: 12px;
     padding: 0.5rem 1.8rem 0.5rem 0.75rem;
@@ -124,9 +110,7 @@ $neu-orange-light: #ff9900;
     font-weight: 700;
     font-size: 0.9rem;
     cursor: pointer;
-    box-shadow:
-      inset 2px 2px 4px $neu-shadow-dark,
-      inset -2px -2px 4px $neu-shadow-light;
+    @include neu-inset($size: 2px);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236c7587' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.65rem center;

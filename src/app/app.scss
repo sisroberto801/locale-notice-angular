@@ -1,10 +1,5 @@
-$neu-bg: #e0e5ec;
-$neu-text: #5a5a5a;
-$neu-text-muted: #6c7587;
-$neu-shadow-light: rgba(255, 255, 255, 0.7);
-$neu-shadow-dark: rgba(163, 177, 198, 0.6);
-$neu-orange: #ff7b00;
-$neu-orange-light: #ff9900;
+@use 'brand-logo' as *;
+@use 'variables' as *;
 
 .main-nav {
   background: $neu-bg;
@@ -35,36 +30,7 @@ $neu-orange-light: #ff9900;
   margin-right: auto;
 
   .brand-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: $neu-bg;
-    box-shadow:
-      3px 3px 6px $neu-shadow-dark,
-      -3px -3px 6px $neu-shadow-light;
-
-    .circle {
-      display: block;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-
-      &-red {
-        background: #e74c3c;
-        margin-right: -5px;
-        opacity: 0.9;
-      }
-
-      &-orange {
-        background: $neu-orange;
-        margin-left: -5px;
-        opacity: 0.85;
-      }
-    }
+    @include brand-logo($size: 42px, $circle-size: 16px, $shadow-size: 3px, $red: #e74c3c);
   }
 
   .brand-name {
