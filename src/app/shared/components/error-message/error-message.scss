@@ -1,44 +1,49 @@
+@use 'variables' as *;
+
 .error-container {
   text-align: center;
-  padding: 2.5rem 2rem;
-  background: rgba(254, 242, 242, 0.8);
+  padding: $space-10 $space-8;
+  background: rgba($color-danger, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  border-radius: var(--radius-lg);
-  margin: 1.5rem auto;
+  border: 1px solid rgba($color-danger, 0.2);
+  border-radius: $radius-lg;
+  margin: $space-6 auto;
   max-width: 480px;
-  box-shadow: var(--shadow-sm);
-  animation: fade-up 0.4s var(--ease-smooth) both;
+  box-shadow: $shadow-sm;
+  animation: fade-up 0.4s $ease-smooth both;
 }
 
 .error-icon {
   font-size: 2.4rem;
   display: block;
-  margin-bottom: 0.85rem;
+  margin-bottom: $space-3;
 }
 
 p {
-  color: var(--danger-dark);
-  margin-bottom: 1.25rem;
-  font-weight: 500;
+  color: $color-danger-dark;
+  margin-bottom: $space-5;
+  font-weight: $font-medium;
 }
 
 button {
-  padding: 0.65rem 1.4rem;
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  padding: $space-2 $space-5;
+  background: linear-gradient(135deg, $color-danger 0%, $color-danger-dark 100%);
   color: white;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: $radius-sm;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 0.9rem;
-  box-shadow: 0 8px 18px rgba(220, 38, 38, 0.28);
-  transition: transform 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth), filter 0.2s var(--ease-smooth);
+  font-weight: $font-semibold;
+  font-size: $text-sm;
+  box-shadow: 0 8px 18px rgba($color-danger-dark, 0.28);
+  transition:
+    transform 0.2s $ease-smooth,
+    box-shadow 0.2s $ease-smooth,
+    filter 0.2s $ease-smooth;
 
   &:hover {
     transform: translateY(-2px);
     filter: brightness(1.05);
-    box-shadow: 0 12px 24px rgba(220, 38, 38, 0.38);
+    box-shadow: 0 12px 24px rgba($color-danger-dark, 0.38);
   }
 }

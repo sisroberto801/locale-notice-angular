@@ -1,61 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+// ============================================================
+//  ESTILOS GLOBALES
+// ============================================================
+//  Responsabilidad: reset, tipografía, scroll, keyframes
+//  y utilidades de alto nivel. Los tokens vienen de _variables.scss
+//  y se exponen como CSS variables en _custom-tokens.scss.
+// ============================================================
 
-/* ===== Design tokens =====
-   Variables reutilizables. Se usan con var(--nombre) en cualquier archivo.
-   Convencion de numeros: mas bajo = mas claro, mas alto = mas oscuro. */
-:root {
-  /* Color primario (azul de la marca) */
-  --primary-50: #eef4ff;   /* fondo muy claro */
-  --primary-100: #dbe6ff;  /* fondo claro */
-  --primary-light: #6d8dff;
-  --primary: #4f6bff;      /* color principal */
-  --primary-dark: #3b52f0;
-  --primary-darker: #2f3fc9;
-
-  /* Color de acento (violeta) */
-  --accent: #a855f7;
-  --accent-dark: #9333ea;
-
-  /* Colores de estado */
-  --success: #10b981;
-  --success-dark: #059669;
-  --danger: #ef4444;
-  --danger-dark: #dc2626;
-  --warning: #f59e0b;
-
-  /* Colores de texto (de mas oscuro a mas claro) */
-  --text-strong: #0b1220; /* titulos */
-  --text-base: #1e293b;   /* texto normal */
-  --text-muted: #475569;  /* texto secundario */
-  --text-soft: #64748b;   /* texto tenue */
-  --text-faint: #94a3b8;  /* placeholders */
-  --border-color: #e2e8f0;
-
-  /* Superficies (fondos translucidos para el efecto glass) */
-  --surface: rgba(255, 255, 255, 0.72);
-  --surface-strong: rgba(255, 255, 255, 0.92);
-  --surface-border: rgba(255, 255, 255, 0.65);
-
-  /* Radios de borde (esquinas redondeadas) */
-  --radius-sm: 10px;
-  --radius: 16px;
-  --radius-lg: 22px;
-  --radius-pill: 999px;
-
-  /* Sombras (de mas sutil a mas pronunciada) */
-  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.06);
-  --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.08);
-  --shadow-md: 0 14px 40px rgba(31, 41, 90, 0.14);
-  --shadow-lg: 0 24px 60px rgba(31, 41, 90, 0.22);
-  --shadow-primary: 0 10px 24px rgba(59, 82, 240, 0.35); /* sombra azul para botones primarios */
-
-  /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, #6d8dff 0%, #4f6bff 45%, #7c3aed 100%);
-  --gradient-success: linear-gradient(135deg, #34d399 0%, #059669 100%);
-
-  /* Curva de animacion suave (para transiciones) */
-  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-}
+@use 'variables' as *;
+@use 'custom-tokens' as *;
 
 * {
   margin: 0;
@@ -68,15 +20,15 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: var(--text-base);
+  font-family: $font-sans;
+  color: $color-text-base;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em;
 
-  /* Neumorphic soft grey background to match modal */
-  background-color: #e0e5ec;
+  /* Neumorphic soft grey background */
+  background-color: $neu-bg;
   background-image:
     radial-gradient(at 12% 18%, rgba(255, 255, 255, 0.45) 0px, transparent 55%),
     radial-gradient(at 88% 8%, rgba(163, 177, 198, 0.25) 0px, transparent 50%),
@@ -86,7 +38,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: $font-display;
   letter-spacing: -0.03em;
 }
 
@@ -110,7 +62,7 @@ h1, h2, h3 {
 }
 
 ::selection {
-  background: rgba(79, 107, 255, 0.25);
+  background: rgba($color-primary, 0.25);
 }
 
 /* Shared entrance animations */
@@ -124,15 +76,14 @@ h1, h2, h3 {
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* ===== Panel de vidrio (efecto glassmorphism) =====
-   Clase reutilizable para tarjetas/paneles con fondo translucido y desenfoque. */
+/* Glassmorphism panel */
 .glass-panel {
-  background: var(--surface);
+  background: $surface;
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
-  border: 1px solid var(--surface-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
+  border: 1px solid $surface-border;
+  border-radius: $radius;
+  box-shadow: $shadow-md;
 }
 
 .glass-panel--dark {

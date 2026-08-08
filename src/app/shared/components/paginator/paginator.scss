@@ -1,34 +1,33 @@
-@use 'brand-logo' as *;
-@use 'neu' as *;
 @use 'variables' as *;
+@use 'neumorphism' as *;
 
 .paginator {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-top: 2rem;
-  padding: 1rem 1.25rem;
+  gap: $space-4;
+  margin-top: $space-8;
+  padding: $space-4 $space-5;
   border-radius: 20px;
   @include neu-raised($size: 8px);
 }
 
 .paginator-info {
   color: $neu-text-muted;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: $text-base;
+  font-weight: $font-medium;
 
   strong {
     color: $neu-text;
-    font-weight: 700;
+    font-weight: $font-bold;
   }
 }
 
 .paginator-controls {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: $space-2;
 }
 
 .nav-btn,
@@ -39,18 +38,21 @@
   min-width: 38px;
   height: 38px;
   border: none;
-  border-radius: 12px;
+  border-radius: $radius-md;
   background: $neu-bg;
   color: $neu-text-muted;
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: $font-bold;
+  font-size: $text-base;
   cursor: pointer;
   @include neu-raised($size: 4px);
-  transition: transform 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth), color 0.2s;
+  transition:
+    transform 0.2s $ease-smooth,
+    box-shadow 0.2s $ease-smooth,
+    color 0.2s;
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
-    color: $neu-orange;
+    color: $brand-orange;
     @include neu-raised($size: 6px);
   }
 
@@ -71,7 +73,7 @@
 }
 
 .page-btn.active {
-  background: linear-gradient(135deg, $neu-orange-light 0%, $neu-orange 100%);
+  background: linear-gradient(135deg, $brand-orange-light 0%, $brand-orange 100%);
   color: #fff;
   box-shadow:
     inset 2px 2px 4px rgba(0, 0, 0, 0.2),
@@ -89,26 +91,26 @@
   min-width: 38px;
   height: 38px;
   color: $neu-text-muted;
-  font-weight: 700;
+  font-weight: $font-bold;
   user-select: none;
 }
 
 .paginator-limit {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: $space-2;
   color: $neu-text-muted;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: $text-base;
+  font-weight: $font-medium;
 
   select {
     appearance: none;
     border: none;
-    border-radius: 12px;
-    padding: 0.5rem 1.8rem 0.5rem 0.75rem;
+    border-radius: $radius-md;
+    padding: $space-2 1.8rem $space-2 $space-3;
     color: $neu-text;
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-weight: $font-bold;
+    font-size: $text-base;
     cursor: pointer;
     @include neu-inset($size: 2px);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236c7587' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");

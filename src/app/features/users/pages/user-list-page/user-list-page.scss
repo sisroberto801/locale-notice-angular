@@ -1,64 +1,61 @@
-@use 'brand-logo' as *;
-@use 'neu' as *;
 @use 'variables' as *;
+@use 'neumorphism' as *;
+@use 'components' as *;
 
 .page-container {
-  padding: 2.5rem 2rem 4rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  min-height: calc(100vh - 60px);
-  animation: fade-up 0.5s var(--ease-smooth);
-  color: $neu-text;
+  @include page-container();
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 1.5rem;
-  margin-bottom: 1.75rem;
+  gap: $space-6;
+  margin-bottom: $space-7;
 
   h1 {
     color: $neu-text;
-    font-size: 2.2rem;
-    font-weight: 800;
+    font-size: $text-2xl;
+    font-weight: $font-extrabold;
     line-height: 1.1;
   }
 
   .subtitle {
-    margin-top: 0.35rem;
+    margin-top: $space-1;
     color: $neu-text-muted;
-    font-size: 0.95rem;
-    font-weight: 400;
+    font-size: $text-base;
+    font-weight: $font-normal;
   }
 }
 
-.btn-primary {
+.btn-primary,
+.btn-create {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.4rem;
+  gap: $space-2;
+  padding: $space-3 $space-5;
   font-size: 0.92rem;
   white-space: nowrap;
-  @include neu-button($radius: 16px, $shadow-size: 6px);
 
   .btn-icon {
     font-size: 1.15rem;
     line-height: 1;
-    font-weight: 700;
+    font-weight: $font-bold;
   }
+
+  @include button-primary();
 }
 
 .stats {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1.1rem;
-  border-radius: 50px;
-  margin-bottom: 1.75rem;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  border-radius: $radius-pill;
+  margin-bottom: $space-7;
   color: $neu-text-muted;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: $text-sm;
+  font-weight: $font-semibold;
   @include neu-raised($size: 6px);
 
   &::before {
@@ -66,7 +63,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: $neu-orange;
+    background: $brand-orange;
     box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
   }
 }
@@ -74,10 +71,10 @@
 .users-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.25rem;
+  gap: $space-5;
 
   app-user-card {
-    animation: fade-up 0.45s var(--ease-smooth) both;
+    animation: fade-up 0.45s $ease-smooth both;
 
     @for $i from 1 through 12 {
       &:nth-child(#{$i}) { animation-delay: #{$i * 0.05}s; }
@@ -88,45 +85,18 @@
 .empty-state {
   grid-column: 1 / -1;
   text-align: center;
-  padding: 4rem 2rem;
-  border-radius: 30px;
+  padding: $space-16 $space-8;
+  border-radius: $radius-2xl;
   @include neu-raised($size: 10px);
 
   p {
-    margin-bottom: 1.25rem;
+    margin-bottom: $space-5;
     color: $neu-text-muted;
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: $font-medium;
   }
-}
-
-.btn-create {
-  padding: 0.75rem 1.5rem;
-  font-size: 0.92rem;
-  @include neu-button($radius: 16px, $shadow-size: 6px);
 }
 
 dialog.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  background: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 1rem;
-  animation: fade-up 0.25s ease both;
-
-  &::backdrop {
-    background: rgba(200, 208, 220, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
+  @include modal-overlay();
 }

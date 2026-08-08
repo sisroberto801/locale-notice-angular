@@ -1,0 +1,31 @@
+@use 'variables' as *;
+
+// ------------------------------------------------------------
+// Sombra elevada (convexa) — paneles, tarjetas, botones inactivos
+// ------------------------------------------------------------
+@mixin neu-raised(
+  $size: 6px,
+  $bg: $neu-bg,
+  $shadow-light: $neu-shadow-light,
+  $shadow-dark: $neu-shadow-dark
+) {
+  background: $bg;
+  box-shadow: #{$size} #{$size} #{$size * 2} $shadow-dark,
+  -#{$size} -#{$size} #{$size * 2} $shadow-light;
+}
+
+
+// ------------------------------------------------------------
+// Sombra hundida (cóncava) — inputs, estados presionados
+// ------------------------------------------------------------
+@mixin neu-inset(
+  $size: 4px,
+  $bg: $neu-bg,
+  $shadow-light: $neu-shadow-light,
+  $shadow-dark: $neu-shadow-dark
+) {
+  background: $bg;
+  box-shadow: inset #{$size} #{$size} #{$size * 2} $shadow-dark,
+  inset -#{$size} -#{$size} #{$size * 2} $shadow-light;
+}
+

@@ -1,0 +1,209 @@
+// ============================================================
+//  COMPONENT MIXINS
+// ============================================================
+//  Patrones de UI reutilizables construidos sobre _variables.scss
+//  y _neumorphism.scss. Un junior debe venir aquí antes de inventar
+//  un nuevo estilo de botón, input, tarjeta, etc.
+// ============================================================
+
+@use 'variables' as *;
+@use 'neumorphism' as *;
+
+// ------------------------------------------------------------
+// Botón primario (naranja / gradiente)
+// ------------------------------------------------------------
+@mixin button-primary(
+  $radius: $radius,
+  $shadow-size: 6px
+) {
+  $button-bg: linear-gradient(135deg, $brand-orange-light 0%, $brand-orange 100%);
+
+  border: none;
+  border-radius: $radius;
+  cursor: pointer;
+  font-weight: $font-bold;
+  color: #fff;
+  @include neu-raised($size: $shadow-size, $bg: $button-bg);
+  transition:
+    transform 0.2s $ease-smooth,
+    box-shadow 0.2s $ease-smooth;
+
+  &:hover {
+    transform: translateY(-2px);
+    @include neu-raised($size: $shadow-size + 2, $bg: $button-bg);
+  }
+
+  &:active {
+    transform: translateY(0);
+    @include neu-inset($size: $shadow-size - 2, $bg: $button-bg);
+  }
+}
+
+// ------------------------------------------------------------
+// Botón de icono / acción secundaria
+// ------------------------------------------------------------
+@mixin button-raised(
+  $size: 38px,
+  $radius: $radius-md,
+  $shadow-size: 4px
+) {
+  border: none;
+  cursor: pointer;
+  width: $size;
+  height: $size;
+  border-radius: $radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $neu-text-muted;
+  @include neu-raised($size: $shadow-size);
+  transition:
+    transform 0.2s $ease-smooth,
+    color 0.2s $ease-smooth,
+    box-shadow 0.2s $ease-smooth;
+
+  &:hover {
+    transform: translateY(-2px);
+    @include neu-raised($size: $shadow-size + 2);
+  }
+
+  &:active {
+    transform: translateY(0);
+    @include neu-inset($size: 2px);
+  }
+}
+
+// ------------------------------------------------------------
+// Input / Select con sombra hundida
+// ------------------------------------------------------------
+@mixin input-inset($size: 6px) {
+  width: 100%;
+  padding: $space-3 $space-4;
+  border: none;
+  border-radius: $radius;
+  font-size: $text-base;
+  font-family: inherit;
+  color: $neu-text;
+  @include neu-inset($size: $size);
+  transition: box-shadow 0.2s $ease-smooth;
+
+  &::placeholder {
+    color: $neu-text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    @include neu-inset($size: $size + 2);
+  }
+}
+
+// ------------------------------------------------------------
+// Select con flecha decorativa
+// ------------------------------------------------------------
+@mixin select-chevron($color: $neu-text-muted) {
+  position: relative;
+
+  select {
+    padding-right: $space-8;
+    cursor: pointer;
+    appearance: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: $space-4;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid $color;
+    pointer-events: none;
+  }
+}
+
+// ------------------------------------------------------------
+// Tarjeta neumórfica
+// ------------------------------------------------------------
+@mixin card($padding: $space-5, $radius: $radius-xl, $shadow-size: 8px) {
+  position: relative;
+  border-radius: $radius;
+  padding: $padding;
+  @include neu-raised($size: $shadow-size);
+  transition:
+    transform 0.3s $ease-smooth,
+    box-shadow 0.3s $ease-smooth;
+
+  &:hover {
+    transform: translateY(-5px);
+    @include neu-raised($size: $shadow-size + 4);
+  }
+}
+
+// ------------------------------------------------------------
+// Modal overlay
+// ------------------------------------------------------------
+@mixin modal-overlay() {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $z-modal;
+  padding: $space-4;
+  animation: fade-up 0.25s ease both;
+
+  &::backdrop {
+    background: rgba(200, 208, 220, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+// ------------------------------------------------------------
+// Contenedor de página
+// ------------------------------------------------------------
+@mixin page-container() {
+  padding: $space-10 $space-8 $space-16;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 60px);
+  animation: fade-up 0.5s $ease-smooth;
+  color: $neu-text;
+}
+
+// ------------------------------------------------------------
+// Insignia / badge
+// ------------------------------------------------------------
+@mixin badge(
+  $bg: rgba($brand-orange, 0.1),
+  $color: $brand-orange
+) {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  padding: $space-1 $space-2;
+  border-radius: $radius-pill;
+  font-size: $text-xs;
+  font-weight: $font-bold;
+  text-transform: capitalize;
+  letter-spacing: 0.01em;
+  background: $bg;
+  color: $color;
+
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+}

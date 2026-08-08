@@ -1,8 +1,127 @@
+// ============================================================
+//  DESIGN TOKENS — Fuente única de verdad de la UI
+// ============================================================
+//  Reglas para junior devs:
+//  • Si necesitas un color, espaciado, sombra o radio, vela aquí.
+//  • NUNCA uses valores hardcodeados (hex, px, rem sueltos) en componentes.
+//  • Si falta un token, añadelo aquí y usalo en todo el proyecto.
+// ============================================================
+
+// ------------------------------------------------------------
+// 1. Colores de marca (Brand)
+// ------------------------------------------------------------
+$brand-orange: #ff7b00;
+$brand-orange-light: #ff9900;
+$brand-red: #eb001b;
+$brand-green: #27ae60;
+
+// ------------------------------------------------------------
+// 2. Superficie neumórfica (fondos)
+// ------------------------------------------------------------
 $neu-bg: #e0e5ec;
+$neu-surface: $neu-bg; // alias semántico para tarjetas/paneles
+
+// ------------------------------------------------------------
+// 3. Texto
+// ------------------------------------------------------------
 $neu-text: #5a5a5a;
 $neu-text-muted: #6c7587;
+
+// ------------------------------------------------------------
+// 4. Sombras neumórficas
+//    Se usan en los mixins neu-raised / neu-inset.
+// ------------------------------------------------------------
 $neu-shadow-light: rgba(255, 255, 255, 0.7);
 $neu-shadow-dark: rgba(163, 177, 198, 0.6);
-$neu-orange: #ff7b00;
-$neu-orange-light: #ff9900;
-$neu-red: #eb001b;
+
+// ------------------------------------------------------------
+// 5. Colores semánticos (estados)
+//    Mapean con las CSS Custom Properties del :root.
+// ------------------------------------------------------------
+$color-primary: #4f6bff;
+$color-primary-light: #6d8dff;
+$color-primary-dark: #3b52f0;
+$color-accent: #a855f7;
+$color-success: #10b981;
+$color-success-dark: #059669;
+$color-danger: #ef4444;
+$color-danger-dark: #dc2626;
+$color-warning: #f59e0b;
+
+$color-text-strong: #0b1220;
+$color-text-base: #1e293b;
+$color-text-muted: #475569;
+$color-text-soft: #64748b;
+$color-text-faint: #94a3b8;
+
+// ------------------------------------------------------------
+// 6. Espaciado (escala 0.25rem)
+// ------------------------------------------------------------
+$space-1: 0.25rem;  //  4px
+$space-2: 0.5rem;   //  8px
+$space-3: 0.75rem;  // 12px
+$space-4: 1rem;     // 16px
+$space-5: 1.25rem;  // 20px
+$space-6: 1.5rem;   // 24px
+$space-7: 1.75rem;  // 28px
+$space-8: 2rem;     // 32px
+$space-10: 2.5rem;  // 40px
+$space-12: 3rem;    // 48px
+$space-16: 4rem;    // 64px
+
+// ------------------------------------------------------------
+// 7. Tipografía
+// ------------------------------------------------------------
+$font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-display: 'Plus Jakarta Sans', $font-sans;
+
+$text-xs: 0.75rem;
+$text-sm: 0.85rem;
+$text-base: 0.95rem;
+$text-md: 1rem;
+$text-lg: 1.08rem;
+$text-xl: 1.75rem;
+$text-2xl: 2.2rem;
+
+$font-normal: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+$font-extrabold: 800;
+
+// ------------------------------------------------------------
+// 8. Radios de borde
+// ------------------------------------------------------------
+$radius-sm: 10px;
+$radius-md: 12px;
+$radius: 16px;
+$radius-lg: 22px;
+$radius-xl: 24px;
+$radius-2xl: 30px;
+$radius-pill: 999px;
+
+// ------------------------------------------------------------
+// 9. Sombras globales (no neumórficas)
+// ------------------------------------------------------------
+$shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.06);
+$shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.08);
+$shadow-md: 0 14px 40px rgba(31, 41, 90, 0.14);
+$shadow-lg: 0 24px 60px rgba(31, 41, 90, 0.22);
+
+// ------------------------------------------------------------
+// 10. Superficies translúcidas
+// ------------------------------------------------------------
+$surface: rgba(255, 255, 255, 0.72);
+$surface-strong: rgba(255, 255, 255, 0.92);
+$surface-border: rgba(255, 255, 255, 0.65);
+
+// ------------------------------------------------------------
+// 11. Curvas de animación
+// ------------------------------------------------------------
+$ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+
+// ------------------------------------------------------------
+// 12. Z-index
+// ------------------------------------------------------------
+$z-sticky: 100;
+$z-modal: 1000;

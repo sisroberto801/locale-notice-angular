@@ -1,15 +1,18 @@
 @use 'variables' as *;
 
-/* ===== Mixin: brand-logo =====
-   Logo circular con dos círculos superpuestos (rojo + naranja).
-   Parametrizable por tamaño. */
+// ============================================================
+//  BRAND LOGO MIXIN
+// ============================================================
+//  Genera el logo circular con dos círculos superpuestos.
+//  Se puede reutilizar en navbar, formularios, etc.
+// ============================================================
 @mixin brand-logo(
   $size: 42px,
   $circle-size: 16px,
   $shadow-size: 3px,
   $circle-overlap: 5px,
-  $red: $neu-red,
-  $orange: $neu-orange,
+  $red: $brand-red,
+  $orange: $brand-orange,
   $bg: $neu-bg,
   $shadow-light: $neu-shadow-light,
   $shadow-dark: $neu-shadow-dark

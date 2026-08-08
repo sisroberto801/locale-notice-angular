@@ -1,31 +1,32 @@
-@use 'brand-logo' as *;
 @use 'variables' as *;
+@use 'neumorphism' as *;
+@use 'brand-logo' as *;
 
 .main-nav {
   background: $neu-bg;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 0.7rem 0;
+  padding: $space-3 0;
   box-shadow:
     0 8px 16px $neu-shadow-dark,
     0 -4px 8px $neu-shadow-light;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: $z-sticky;
 }
 
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 $space-8;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: $space-8;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: $space-2;
   text-decoration: none;
   margin-right: auto;
 
@@ -34,8 +35,8 @@
   }
 
   .brand-name {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 700;
+    font-family: $font-display;
+    font-weight: $font-bold;
     font-size: 1.05rem;
     color: $neu-text;
     letter-spacing: -0.02em;
@@ -44,33 +45,31 @@
 
 .nav-links {
   display: flex;
-  gap: 0.4rem;
+  gap: $space-2;
 
   a {
     color: $neu-text-muted;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: $font-semibold;
     font-size: 0.92rem;
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
-    transition: all 0.25s var(--ease-smooth);
-    box-shadow:
-      3px 3px 6px $neu-shadow-dark,
-      -3px -3px 6px $neu-shadow-light;
+    padding: $space-2 $space-4;
+    border-radius: $radius-md;
+    transition:
+      color 0.25s $ease-smooth,
+      box-shadow 0.25s $ease-smooth;
+    @include neu-raised($size: 3px);
 
     &:hover {
-      color: $neu-orange;
-      box-shadow:
-        4px 4px 8px $neu-shadow-dark,
-        -4px -4px 8px $neu-shadow-light;
+      color: $brand-orange;
+      @include neu-raised($size: 4px);
     }
 
     &.active {
-      background: linear-gradient(135deg, $neu-orange-light 0%, $neu-orange 100%);
+      background: linear-gradient(135deg, $brand-orange-light 0%, $brand-orange 100%);
       color: #fff;
       box-shadow:
-        3px 3px 6px rgba(163, 177, 198, 0.7),
-        -3px -3px 6px rgba(255, 255, 255, 0.8),
+        3px 3px 6px $neu-shadow-dark,
+        -3px -3px 6px $neu-shadow-light,
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
   }

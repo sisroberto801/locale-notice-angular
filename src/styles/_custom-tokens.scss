@@ -1,0 +1,60 @@
+// ============================================================
+//  CSS CUSTOM PROPERTIES (Design Tokens expuestos al runtime)
+// ============================================================
+//  Estas variables se usan con var(--nombre) en componentes
+//  que no compilan SCSS, o directamente en el HTML/template.
+//  Se generan UNA SOLA VEZ desde _variables.scss para mantener
+//  una única fuente de verdad.
+// ============================================================
+
+@use 'variables' as *;
+
+:root {
+  // Brand
+  --neu-bg: #{$neu-bg};
+  --neu-text: #{$neu-text};
+  --neu-text-muted: #{$neu-text-muted};
+  --neu-orange: #{$brand-orange};
+  --neu-orange-light: #{$brand-orange-light};
+  --neu-red: #{$brand-red};
+
+  // Primary
+  --primary: #{$color-primary};
+  --primary-light: #{$color-primary-light};
+  --primary-dark: #{$color-primary-dark};
+
+  // Accent & status
+  --accent: #{$color-accent};
+  --success: #{$color-success};
+  --success-dark: #{$color-success-dark};
+  --danger: #{$color-danger};
+  --danger-dark: #{$color-danger-dark};
+  --warning: #{$color-warning};
+
+  // Text
+  --text-strong: #{$color-text-strong};
+  --text-base: #{$color-text-base};
+  --text-muted: #{$color-text-muted};
+  --text-soft: #{$color-text-soft};
+  --text-faint: #{$color-text-faint};
+
+  // Surfaces
+  --surface: #{$surface};
+  --surface-strong: #{$surface-strong};
+  --surface-border: #{$surface-border};
+
+  // Radius
+  --radius-sm: #{$radius-sm};
+  --radius: #{$radius};
+  --radius-lg: #{$radius-lg};
+  --radius-pill: #{$radius-pill};
+
+  // Shadows
+  --shadow-xs: #{$shadow-xs};
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+
+  // Easing
+  --ease-smooth: #{$ease-smooth};
+}

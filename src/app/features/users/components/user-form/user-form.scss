@@ -1,129 +1,92 @@
-@use 'brand-logo' as *;
-@use 'neu' as *;
 @use 'variables' as *;
+@use 'neumorphism' as *;
+@use 'brand-logo' as *;
+@use 'components' as *;
 
 .form-container {
-  padding: 2.5rem;
-  border-radius: 30px;
+  padding: $space-10;
+  border-radius: $radius-2xl;
   width: min(400px, calc(100vw - 2rem));
-  @include neu-raised($size: 10px);
-  animation: pop-in 0.35s var(--ease-smooth) both;
+  @include neu-raised($size: 10px, $shadow-light: rgba(163, 177, 198, 0.6));
+  animation: pop-in 0.35s $ease-smooth both;
   color: $neu-text;
 }
 
 .brand-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: $space-8;
 
   h2 {
-    font-size: 1.75rem;
-    font-weight: 800;
+    font-size: $text-xl;
+    font-weight: $font-extrabold;
     color: $neu-text;
-    margin-bottom: 0.35rem;
+    margin-bottom: $space-1;
     letter-spacing: -0.02em;
   }
 
   .brand-subtitle {
     color: $neu-text-muted;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: $text-sm;
+    font-weight: $font-medium;
   }
 }
 
 .brand-logo {
-  margin: 0 auto 1.25rem;
+  margin: 0 auto $space-5;
   @include brand-logo($size: 110px, $circle-size: 44px, $shadow-size: 8px, $circle-overlap: 14px);
 }
 
 .form-group {
-  margin-bottom: 1.25rem;
+  margin-bottom: $space-5;
 
   label {
     display: block;
-    margin-bottom: 0.6rem;
-    padding-left: 0.25rem;
-    font-weight: 600;
-    font-size: 0.85rem;
+    margin-bottom: $space-2;
+    padding-left: $space-1;
+    font-weight: $font-semibold;
+    font-size: $text-sm;
     color: $neu-text-muted;
   }
 
   input,
   select {
-    width: 100%;
-    padding: 0.9rem 1.1rem;
-    border: none;
-    border-radius: 16px;
-    font-size: 0.95rem;
-    font-family: inherit;
-    color: $neu-text;
-    @include neu-inset($size: 6px);
-    transition: box-shadow 0.2s var(--ease-smooth);
-
-    &::placeholder {
-      color: #9ba4b0;
-    }
-
-    &:focus {
-      outline: none;
-      @include neu-inset($size: 8px);
-    }
-  }
-
-  select {
-    cursor: pointer;
-    appearance: none;
+    @include input-inset($size: 6px);
+    padding: $space-3 $space-4;
   }
 }
 
 .select-wrapper {
-  position: relative;
-
-  select {
-    padding-right: 2.5rem;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    right: 1.1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 6px solid $neu-text-muted;
-    pointer-events: none;
-  }
+  @include select-chevron();
 }
 
 .btn-submit {
   width: 100%;
-  margin-top: 0.5rem;
-  padding: 0.95rem;
-  font-size: 1rem;
-  @include neu-button($radius: 16px, $shadow-size: 6px);
+  margin-top: $space-2;
+  padding: $space-3;
+  font-size: $text-md;
+  @include button-primary();
 }
 
 .form-footer {
   display: flex;
   justify-content: center;
-  margin-top: 1.25rem;
+  margin-top: $space-5;
 
   .btn-link {
     background: none;
     border: none;
     color: $neu-text-muted;
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: $font-semibold;
+    font-size: $text-sm;
     cursor: pointer;
-    padding: 0.4rem 0.75rem;
-    border-radius: 10px;
-    transition: color 0.2s var(--ease-smooth), background 0.2s var(--ease-smooth);
+    padding: $space-1 $space-3;
+    border-radius: $radius-sm;
+    transition: color 0.2s $ease-smooth,
+    background 0.2s $ease-smooth;
 
     &:hover {
-      color: $neu-orange;
-      background: rgba(255, 123, 0, 0.08);
+      color: $brand-orange;
+      background: rgba($brand-orange, 0.08);
     }
   }
 }
