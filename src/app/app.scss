@@ -6,9 +6,8 @@
   background: $neu-bg;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   padding: $space-3 0;
-  box-shadow:
-    0 8px 16px $neu-shadow-dark,
-    0 -4px 8px $neu-shadow-light;
+  box-shadow: 0 8px 16px $neu-shadow-dark,
+  0 -4px 8px $neu-shadow-light;
   position: sticky;
   top: 0;
   z-index: $z-sticky;
@@ -54,9 +53,8 @@
     font-size: 0.92rem;
     padding: $space-2 $space-4;
     border-radius: $radius-md;
-    transition:
-      color 0.25s $ease-smooth,
-      box-shadow 0.25s $ease-smooth;
+    transition: color 0.25s $ease-smooth,
+    box-shadow 0.25s $ease-smooth;
     @include neu-raised($size: 3px);
 
     &:hover {
@@ -67,10 +65,9 @@
     &.active {
       background: linear-gradient(135deg, $brand-orange-light 0%, $brand-orange 100%);
       color: #fff;
-      box-shadow:
-        3px 3px 6px $neu-shadow-dark,
-        -3px -3px 6px $neu-shadow-light,
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      box-shadow: 3px 3px 6px $neu-shadow-dark,
+      -3px -3px 6px $neu-shadow-light,
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
   }
 }

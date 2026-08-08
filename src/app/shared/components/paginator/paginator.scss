@@ -45,10 +45,9 @@
   font-size: $text-base;
   cursor: pointer;
   @include neu-raised($size: 4px);
-  transition:
-    transform 0.2s $ease-smooth,
-    box-shadow 0.2s $ease-smooth,
-    color 0.2s;
+  transition: transform 0.2s $ease-smooth,
+  box-shadow 0.2s $ease-smooth,
+  color 0.2s;
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
@@ -75,9 +74,8 @@
 .page-btn.active {
   background: linear-gradient(135deg, $brand-orange-light 0%, $brand-orange 100%);
   color: #fff;
-  box-shadow:
-    inset 2px 2px 4px rgba(0, 0, 0, 0.2),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.2);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+  inset -2px -2px 4px rgba(255, 255, 255, 0.2);
 
   &:hover {
     color: #fff;

@@ -36,10 +36,9 @@ button {
   font-weight: $font-semibold;
   font-size: $text-sm;
   box-shadow: 0 8px 18px rgba($color-danger-dark, 0.28);
-  transition:
-    transform 0.2s $ease-smooth,
-    box-shadow 0.2s $ease-smooth,
-    filter 0.2s $ease-smooth;
+  transition: transform 0.2s $ease-smooth,
+  box-shadow 0.2s $ease-smooth,
+  filter 0.2s $ease-smooth;
 
   &:hover {
     transform: translateY(-2px);

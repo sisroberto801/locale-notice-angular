@@ -77,7 +77,9 @@
     animation: fade-up 0.45s $ease-smooth both;
 
     @for $i from 1 through 12 {
-      &:nth-child(#{$i}) { animation-delay: #{$i * 0.05}s; }
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.05}s;
+      }
     }
   }
 }

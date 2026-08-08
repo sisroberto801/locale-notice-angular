@@ -24,9 +24,8 @@
   font-weight: $font-bold;
   color: #fff;
   @include neu-raised($size: $shadow-size, $bg: $button-bg);
-  transition:
-    transform 0.2s $ease-smooth,
-    box-shadow 0.2s $ease-smooth;
+  transition: transform 0.2s $ease-smooth,
+  box-shadow 0.2s $ease-smooth;
 
   &:hover {
     transform: translateY(-2px);
@@ -57,10 +56,9 @@
   justify-content: center;
   color: $neu-text-muted;
   @include neu-raised($size: $shadow-size);
-  transition:
-    transform 0.2s $ease-smooth,
-    color 0.2s $ease-smooth,
-    box-shadow 0.2s $ease-smooth;
+  transition: transform 0.2s $ease-smooth,
+  color 0.2s $ease-smooth,
+  box-shadow 0.2s $ease-smooth;
 
   &:hover {
     transform: translateY(-2px);
@@ -132,9 +130,8 @@
   border-radius: $radius;
   padding: $padding;
   @include neu-raised($size: $shadow-size);
-  transition:
-    transform 0.3s $ease-smooth,
-    box-shadow 0.3s $ease-smooth;
+  transition: transform 0.3s $ease-smooth,
+  box-shadow 0.3s $ease-smooth;
 
   &:hover {
     transform: translateY(-5px);

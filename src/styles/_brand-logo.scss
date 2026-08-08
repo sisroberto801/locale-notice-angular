@@ -24,9 +24,8 @@
   height: $size;
   border-radius: 50%;
   background: $bg;
-  box-shadow:
-    #{$shadow-size} #{$shadow-size} #{$shadow-size * 2} $shadow-dark,
-    -#{$shadow-size} -#{$shadow-size} #{$shadow-size * 2} $shadow-light;
+  box-shadow: #{$shadow-size} #{$shadow-size} #{$shadow-size * 2} $shadow-dark,
+  -#{$shadow-size} -#{$shadow-size} #{$shadow-size * 2} $shadow-light;
 
   .circle {
     display: block;
